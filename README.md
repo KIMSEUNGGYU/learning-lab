@@ -1,2 +1,0 @@
-# learning-lab
-Learning Lab
