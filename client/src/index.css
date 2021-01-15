@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+/* COMMON */
+body {
+  color: black;
+  background: #f5f6f7;
+}
+.body__container {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+}
+
+/* INNER LEFT / RIGHT */
+.float--left {
+  float: left;
+}
+.float--right {
+  float: right;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+/* BTN */
+.btn {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  /* border: none; */
+  border: rgba(81, 167, 232, 0.5);
+  color: #0079bf;
+}
+.btn:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #0079bf !important;
+  /* border-color: 1px solid #51a7e8 !important;  */
+  /* header #search 선택자를 덮어쓰기 위해서 사용 */
+  box-shadow: inset 0 1px 2px rgba(81, 167, 232, 0.075),
+    0 0 5px rgba(81, 167, 232, 0.5);
+}
+.btn.btn--primary {
+  border: 1px solid #eee;
+  color: #fff;
+  background: #0079bf;
+}
+
+/* INPUT */
+.input--text {
+  height: 34px;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+}
+.input--text:focus {
+  border-color: #51a7e8 !important; /* header #search 선택자를 덮어쓰기 위해서 사용 */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075),
+    0 0 5px rgba(81, 167, 232, 0.5);
+}
+/* Vendor prefix(브라우저 업체별 접두어) */
+.input--text::-webkit-input-placeholder {
+  color: #cacaca;
+}
+.input--text:-ms-input-placeholder {
+  color: #cacaca;
+}
+.input--text::-moz-placeholder {
+  color: #cacaca;
+}
+
+/* SECTION */
+.section {
+  position: relative;
+}
+/* 가운데 정렬 단, width가 정의되어 있어야함. */
+.section .inner {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
