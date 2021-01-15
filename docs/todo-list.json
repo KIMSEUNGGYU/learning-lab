@@ -1,0 +1,223 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "learning-lab todo-list",
+    "description": "todo-list api",
+    "contact": {
+      "email": "dev.seunggyu@gmail.com"
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "{protocol}://{domain}/{version}",
+      "variables": {
+        "protocol": {
+          "default": "http",
+          "enum": [
+            "http",
+            "https"
+          ]
+        },
+        "domain": {
+          "default": "127.0.0.1:3000",
+          "enum": [
+            "127.0.0.1:3000"
+          ]
+        },
+        "version": {
+          "default": "v1",
+          "enum": [
+            "v1"
+          ]
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "API USER"
+    },
+    {
+      "name": "todo-list",
+      "description": "API TODO-LIST"
+    }
+  ],
+  "paths": {
+    "/signup": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "회원가입 API",
+        "requestBody": {
+          "description": "User ID / Password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/signup"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created Success / 요청이 성공하였으며, 새로운 리소스가 생성되었습니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Created"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request / 잘못된 요청입니다. 요청 파라미터를 확인 하시기 바랍니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "로그인 API",
+        "requestBody": {
+          "description": "User ID / Password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/signin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success / 요청 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request / 잘못된 요청입니다. 요청 파라미터를 확인 하시기 바랍니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized / 인증에 문제가 있는 경우 입니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "signup": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "user id",
+            "example": "gyuu6"
+          },
+          "userPassword": {
+            "type": "string",
+            "description": "user password",
+            "example": "password!@"
+          }
+        }
+      },
+      "signin": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "user id",
+            "example": "gyu"
+          },
+          "userPassword": {
+            "type": "string",
+            "description": "user password",
+            "example": "123456789"
+          }
+        }
+      },
+      "Success": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          }
+        },
+        "description": "HTTP 200 CODE"
+      },
+      "Created": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          }
+        },
+        "description": "HTTP 201 CODE"
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          }
+        },
+        "description": "HTTP 400 CODE"
+      },
+      "Unauthorized": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          }
+        },
+        "description": "HTTP 401 CODE"
+      }
+    }
+  }
+}
