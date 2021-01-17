@@ -12,19 +12,12 @@
 - **staging**: `todo-list` 서비스를 제공할 때 해당 branch 이용
 - **develop**: 필요 없을 수도...
 - **G-[number]**: 각 기능별 정의 (단위는 임의)  
-  단위는 프로젝트 단위로 갈 예정.
+   단위는 프로젝트 단위로 갈 예정.
 
-**`G-1`: swagger**
+**`G-1`: swagger** <br>
 
-<img src="https://img.shields.io/badge/npm-6.14.8-CB3837?style=flat-square&logo=npm&logoColor=white"/>
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=black"/>
-<img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black"/>
-
-<br>
+<img src="https://img.shields.io/badge/npm-6.14.8-CB3837?style=flat-square&logo=npm&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=black"/> <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/> <img src="https://img.shields.io/badge/swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black"/>
 
 **`G-2`: todo-list (`client`**)
 
-<img src="https://img.shields.io/badge/npm-6.14.8-CB3837?style=flat-square&logo=npm&logoColor=white"/>
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=black"/> <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
-<img src="https://img.shields.io/badge/styled--components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
+<img src="https://img.shields.io/badge/npm-6.14.8-CB3837?style=flat-square&logo=npm&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=black"/> <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/styled--components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
