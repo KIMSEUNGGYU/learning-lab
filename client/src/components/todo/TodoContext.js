@@ -31,6 +31,11 @@ function todoReducer(state, action) {
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
       );
+    // UPDATE;
+    case "UPDATE":
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, text: action.todoText } : todo
+      );
     case "REMOVE":
       return state.filter((todo) => todo.id !== action.id);
     default:

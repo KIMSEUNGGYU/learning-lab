@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useTodoState } from "./TodoContext";
 
@@ -19,29 +19,56 @@ const TodoHeadBlock = styled.div`
     font-size: 21px;
   }
   .tasks-left {
-    color: #20c997;
+    color: #0079bf;
+    // color: #20c997;
     font-size: 18px;
     margin-top: 40px;
     font-weight: bold;
   }
 `;
 
+const Input = styled.input``;
+
 function TodoHead() {
   const todos = useTodoState();
   const undoneTasks = todos.filter((todo) => !todo.done);
-
   const today = new Date();
-  const dateString = today.toLocaleDateString("ko-KR", {
+  const date = today.toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-  const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
+
+  const [dateString, setText] = useState(date);
+  const [editable, setEditable] = useState(false);
+
+  const onChange = (e) => {
+    setText(e.target.value);
+  };
+  const KeyDown = (event) => {
+    if (event.key === "Enter") {
+      setEditable(!editable);
+    }
+  };
+
+  const changeEditMode = () => {
+    setEditable(!editable);
+  };
 
   return (
     <TodoHeadBlock>
-      <h1>{dateString}</h1>
-      <div className="day">{dayName}</div>
+      {editable ? (
+        <Input
+          type="text"
+          value={dateString}
+          onChange={onChange}
+          onKeyDown={KeyDown}
+        />
+      ) : (
+        <h1 onDoubleClick={changeEditMode}>{dateString}</h1>
+      )}
+
+      {/* <div className="day">{dayName}</div> */}
       <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
     </TodoHeadBlock>
   );

@@ -5,8 +5,6 @@ import Footer from "./components/footer/Footer";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
-// import TodoTemplate from "./components/todo/TodoTemplate";
-// import TodoTemplate from "./components/todo/TodoTemplate";
 import Todo from "./components/todo/Todo";
 
 function App() {

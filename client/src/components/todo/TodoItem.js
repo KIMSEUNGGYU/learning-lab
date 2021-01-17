@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { MdDone, MdDelete } from "react-icons/md";
 import { useTodoDispatch } from "./TodoContext";
@@ -42,8 +42,10 @@ const CheckCircle = styled.div`
   ${(props) =>
     props.done &&
     css`
-      border: 1px solid #38d9a9;
-      color: #38d9a9;
+      // border: 1px solid #38d9a9;
+      // color: #38d9a9;
+      border: 1px solid #0079bf;
+      color: #0079bf;
     `}
 `;
 
@@ -58,16 +60,48 @@ const Text = styled.div`
     `}
 `;
 
+const Input = styled.input``;
+
 function TodoItem({ id, done, text }) {
   const dispatch = useTodoDispatch();
   const onToggle = () => dispatch({ type: "TOGGLE", id });
   const onRemove = () => dispatch({ type: "REMOVE", id });
+  const onUpdate = (todoText) => dispatch({ type: "UPDATE", id, todoText });
+
+  const [todoText, setTodoText] = useState(text);
+  const [editable, setEditable] = useState(false);
+
+  const onChange = (e) => {
+    setTodoText(e.target.value);
+  };
+  const KeyDown = (event) => {
+    if (event.key === "Enter") {
+      setEditable(!editable);
+      onUpdate(todoText);
+    }
+  };
+
+  const changeEditMode = () => {
+    setEditable(!editable);
+  };
+
   return (
     <TodoItemBlock>
       <CheckCircle done={done} onClick={onToggle}>
         {done && <MdDone />}
       </CheckCircle>
-      <Text done={done}>{text}</Text>
+      {editable ? (
+        <Input
+          type="text"
+          value={todoText}
+          onChange={onChange}
+          onKeyDown={KeyDown}
+        />
+      ) : (
+        <Text done={done} onClick={changeEditMode}>
+          {text}
+        </Text>
+      )}
       <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
