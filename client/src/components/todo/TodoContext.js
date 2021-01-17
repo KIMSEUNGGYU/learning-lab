@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useContext, useRef } from "react";
+import React, { useReducer, createContext, useContext } from "react";
 
 const initialTodos = [
   {
@@ -31,7 +31,6 @@ function todoReducer(state, action) {
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
       );
-    // UPDATE;
     case "UPDATE":
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, text: action.todoText } : todo
@@ -50,16 +49,11 @@ const TodoNextIdContext = createContext();
 
 export function TodoProvider({ children }) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
-  // const nextId = useRef(5);
 
   return (
     <TodoStateContext.Provider value={state}>
       <TodoDispatchContext.Provider value={dispatch}>
-        {/* <TodoNextIdContext.Provider value={nextId}> */}
-        {/* <TodoNextIdContext.Provider value={hashId}> */}
         {children}
-        {/* </TodoNextIdContext.Provider> */}
-        {/* </TodoNextIdContext.Provider> */}
       </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
   );
@@ -71,8 +65,4 @@ export function useTodoState() {
 
 export function useTodoDispatch() {
   return useContext(TodoDispatchContext);
-}
-
-export function useTodoNextId() {
-  return useContext(TodoNextIdContext);
 }
