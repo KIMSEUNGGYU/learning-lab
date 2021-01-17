@@ -1,0 +1,38 @@
+/* HEADER */
+header {
+  background: #fff;
+  border-bottom: 1px solid rgba(205, 207, 209, 0.75);
+  box-shadow: 0 0 px rgba(205, 207, 209, 0.75);
+}
+header .inner {
+  height: 78px;
+}
+
+header .logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.logo a {
+  display: block;
+  padding: 10px;
+  font-size: 24px;
+  /* color: #fff; */
+  color: #0079bf;
+}
+
+header .menu-group {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+header .menu {
+  display: flex;
+}
+header .menu li a {
+  display: block;
+  padding: 10px;
+  font-size: 22px;
+  color: #0079bf;
+}
