@@ -25,3 +25,4 @@ yarn-error.log*
 # developer
 .eslintcache
 workspace.code-workspace
+debug*
