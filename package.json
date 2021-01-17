@@ -1,0 +1,24 @@
+{
+  "name": "learning-lab",
+  "version": "1.0.0",
+  "description": "swagger api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KIMSEUNGGYU/learning-lab.git"
+  },
+  "author": "seunggyu kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KIMSEUNGGYU/learning-lab/issues"
+  },
+  "homepage": "https://github.com/KIMSEUNGGYU/learning-lab#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.6"
+  }
+}

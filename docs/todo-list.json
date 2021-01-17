@@ -1,0 +1,557 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "learning-lab todo-list",
+    "description": "todo-list api",
+    "contact": {
+      "email": "dev.seunggyu@gmail.com"
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "{protocol}://{domain}/{version}",
+      "variables": {
+        "protocol": {
+          "default": "http",
+          "enum": [
+            "http",
+            "https"
+          ]
+        },
+        "domain": {
+          "default": "127.0.0.1:3000",
+          "enum": [
+            "127.0.0.1:3000"
+          ]
+        },
+        "version": {
+          "default": "v1",
+          "enum": [
+            "v1"
+          ]
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "API USER"
+    },
+    {
+      "name": "todo",
+      "description": "API TODO"
+    }
+  ],
+  "paths": {
+    "/signup": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "회원가입 API",
+        "requestBody": {
+          "description": "User ID / Password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/signup"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created Success / 요청이 성공하였으며, 새로운 리소스가 생성되었습니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_201"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request / 잘못된 요청입니다. 요청 파라미터를 확인 하시기 바랍니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_400"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/signin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "로그인 API",
+        "requestBody": {
+          "description": "User ID / Password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/signin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success / 요청 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request / 잘못된 요청입니다. 요청 파라미터를 확인 하시기 바랍니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized / 인증(Token) 에 문제가 있는 경우 입니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo/{userId}": {
+      "get": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "GET todo by USER",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "gyuu6"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success / get todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo": {
+      "post": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Create TODO",
+        "requestBody": {
+          "description": "User ID / Password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createTodo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created Success / 요청이 성공하였으며, 새로운 리소스가 생성되었습니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_201"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo/title": {
+      "patch": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Update Todo Title",
+        "requestBody": {
+          "description": "User ID / Password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateTodoTitle"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Success / 요청 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request / 잘못된 요청입니다. 요청 파라미터를 확인 하시기 바랍니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized / 인증(Token) 에 문제가 있는 경우 입니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo/item": {
+      "patch": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Update Todo Item",
+        "requestBody": {
+          "description": "User ID / Password",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateTodoItem"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success / 요청 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request / 잘못된 요청입니다. 요청 파라미터를 확인 하시기 바랍니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized / 인증(Token) 에 문제가 있는 경우 입니다.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "signup": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "user id",
+            "example": "gyuu6"
+          },
+          "userPassword": {
+            "type": "string",
+            "description": "user password",
+            "example": "password!@"
+          }
+        }
+      },
+      "signin": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "user id",
+            "example": "gyu"
+          },
+          "userPassword": {
+            "type": "string",
+            "description": "user password",
+            "example": "123456789"
+          }
+        }
+      },
+      "createTodo": {
+        "type": "object",
+        "properties": {
+          "todoId": {
+            "type": "string",
+            "description": "todo item id",
+            "example": "1fajslkvih2"
+          },
+          "todoText": {
+            "type": "string",
+            "description": "todo item text",
+            "example": "투두 리스트 아이템 텍스트"
+          },
+          "property": {
+            "type": "boolean",
+            "description": "todo item property",
+            "example": false
+          }
+        }
+      },
+      "updateTodoTitle": {
+        "type": "object",
+        "properties": {
+          "todoTitleId": {
+            "type": "number",
+            "description": "todo Title id",
+            "example": 1
+          },
+          "todoTitle": {
+            "type": "string",
+            "description": "TODO Title Text",
+            "example": "오늘의 할 일"
+          }
+        }
+      },
+      "updateTodoItem": {
+        "type": "object",
+        "properties": {
+          "todoItemId": {
+            "type": "string",
+            "description": "Todo Item ID",
+            "example": "vkzudmv"
+          },
+          "todoItemText": {
+            "type": "string",
+            "description": "TODO Item Text",
+            "example": "백준 2049"
+          }
+        }
+      },
+      "inline_response_201": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Created Success"
+          },
+          "result": {
+            "type": "object"
+          }
+        }
+      },
+      "inline_response_400": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Bad Request"
+          },
+          "result": {
+            "type": "object"
+          }
+        }
+      },
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Success"
+          },
+          "result": {
+            "type": "object"
+          }
+        }
+      },
+      "inline_response_401": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Unauthorized"
+          },
+          "result": {
+            "type": "object"
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Success"
+          },
+          "result": {
+            "type": "object",
+            "example": {
+              "todo": {
+                "title": "코딩테스트",
+                "items": [
+                  {
+                    "id": "1dnjklv",
+                    "text": "프린터",
+                    "property": "true"
+                  },
+                  {
+                    "id": "vlicnsd123",
+                    "text": "124 나라의 숫자",
+                    "property": "false"
+                  },
+                  {
+                    "id": "vkzudmv",
+                    "text": "멀쩡한 사각형",
+                    "property": "false"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "success": {
+        "description": "Success / 요청 성공",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inline_response_200"
+            }
+          }
+        }
+      },
+      "created": {
+        "description": "Created Success / 요청이 성공하였으며, 새로운 리소스가 생성되었습니다.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inline_response_201"
+            }
+          }
+        }
+      },
+      "updated": {
+        "description": "Updated Success / 요청이 성공하였으며, 리소스의 수정이 반영되었습니다.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Updated Success"
+                },
+                "result": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "badRequest": {
+        "description": "Bad Request / 잘못된 요청입니다. 요청 파라미터를 확인 하시기 바랍니다.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inline_response_400"
+            }
+          }
+        }
+      },
+      "unauthorized": {
+        "description": "Unauthorized / 인증(Token) 에 문제가 있는 경우 입니다.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inline_response_401"
+            }
+          }
+        }
+      },
+      "getTodo": {
+        "description": "Success / get todo",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inline_response_200_1"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "getTodo": {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string",
+          "example": "gyuu6"
+        }
+      }
+    }
+  }
+}
