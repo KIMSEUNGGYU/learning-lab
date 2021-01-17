@@ -14,7 +14,8 @@
 - **G-[number]**: 각 기능별 정의 (단위는 임의)  
   단위는 프로젝트 단위로 갈 예정.
 
-**`G-1`**: swagger <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**`G-1`: swagger**
+
 <img src="https://img.shields.io/badge/npm-6.14.8-CB3837?style=flat-square&logo=npm&logoColor=white"/>
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=black"/>
 <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white"/>
@@ -22,7 +23,8 @@
 
 <br>
 
-**`G-2`**: todo-list (`react.js`, `express.js`) <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**`G-2`: todo-list (`client`**)
+
 <img src="https://img.shields.io/badge/npm-6.14.8-CB3837?style=flat-square&logo=npm&logoColor=white"/>
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=black"/> <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
 <img src="https://img.shields.io/badge/styled--components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
