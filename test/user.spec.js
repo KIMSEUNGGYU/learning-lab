@@ -1,8 +1,11 @@
 const should = require("should"); // ! 검증 라이브러리 (node에서 권장하는 써드파티 라이브러리)
 const request = require("supertest");
-const app = require("../app");
 
+const app = require("../app");
+const models = require("../models");
 const BASE_URL = "/api";
+
+before(() => models.sequelize.sync({ force: true }));
 
 describe("POST /user/signup 는", () => {
   describe("성공시", () => {

@@ -3,23 +3,33 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class users extends Model {
-    static associate(models) {
-      users.hasMany(models.todoTitles, {
-        foreignKey: "userId",
-        sourceKey: "userId",
-      });
-    }
+    static associate(models) {}
   }
 
   users.init(
     {
-      userId: DataTypes.STRING,
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      userId: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        unique: true,
+      },
       password: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "users",
+      charset: "utf8",
     }
   );
+
+  users.getUser = async (userId) => await users.findOne({ where: { userId } });
+  users.signup = async (userId, password) =>
+    await users.create({ userId, password });
+
   return users;
 };

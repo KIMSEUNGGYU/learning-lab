@@ -4,7 +4,7 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class todoItems extends Model {
     static associate(models) {
-      todoItems.belongsToMany(models.todoTitles, {
+      todoItems.belongsTo(models.todoTitles, {
         foreignKey: "titleId",
         targetKey: "id",
       });
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "todoItems",
+      charset: "utf8",
     }
   );
   return todoItems;

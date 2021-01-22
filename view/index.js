@@ -15,6 +15,11 @@ module.exports = {
     message: "Bad Request",
     result: {},
   }),
+  // badRequest: (res) =>
+  //   res.status(400).json({
+  //     message: "Bad Request",
+  //     result: {},
+  //   }),
   unauthorized: () => ({
     message: "Unauthorized",
     result: {},

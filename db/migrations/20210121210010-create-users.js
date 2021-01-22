@@ -13,6 +13,7 @@ module.exports = {
         userId: {
           primaryKey: true,
           type: Sequelize.STRING,
+          unique: true,
         },
         password: {
           type: Sequelize.STRING,

@@ -5,10 +5,11 @@
   "scripts": {
     "start": "nodemon -L ./bin/www",
     "dev": "nodemon -L ./app.js",
-    "test": "mocha"
+    "test": "cross-env NODE_ENV=test mocha"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "cross-env": "^7.0.3",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",

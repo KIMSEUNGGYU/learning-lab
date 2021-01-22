@@ -6,24 +6,27 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       todoTitles.belongsTo(models.users, {
         foreignKey: "userId",
-        targetKey: "id",
-      });
-
-      todoTitles.hasMany(models.todoItems, {
-        foreignKey: "titleId",
-        sourceKey: "id",
+        targetKey: "userId",
       });
     }
   }
 
   todoTitles.init(
     {
-      userId: DataTypes.STRING,
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      userId: {
+        type: DataTypes.STRING,
+      },
       title: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "todoTitles",
+      charset: "utf8",
     }
   );
   return todoTitles;
