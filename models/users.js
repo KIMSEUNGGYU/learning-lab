@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  users.getUser = async (userId) => await users.findOne({ where: { userId } });
+  users.getUser = async ({ ...param }) => await users.findOne({ where: param });
+
   users.signup = async (userId, password) =>
     await users.create({ userId, password });
 
