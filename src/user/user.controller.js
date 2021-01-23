@@ -9,13 +9,12 @@ const userService = require("./user.service");
  */
 const router = express.Router();
 
-// temp api
-router.get("/", async function (req, res, next) {
+router.get("/", async (req, res, next) => {
   const users = await userService.findAll();
   res.status(200).json(users);
 });
 
-router.post("/signup", async function (req, res, next) {
+router.post("/signup", async (req, res, next) => {
   // const user = req.body;
   const { userId, password } = req.body;
 
@@ -39,7 +38,7 @@ router.post("/signup", async function (req, res, next) {
   }
 });
 
-router.post("/signin", async function (req, res, next) {
+router.post("/signin", async (req, res, next) => {
   const { userId, password } = req.body;
 
   if (!(userId && password)) {
