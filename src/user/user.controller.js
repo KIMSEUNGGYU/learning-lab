@@ -9,11 +9,13 @@ const userService = require("./user.service");
  */
 const router = express.Router();
 
+// GET /users/
 router.get("/", async (req, res, next) => {
   const users = await userService.findAll();
   res.status(200).json(users);
 });
 
+// POST /users/signup
 router.post("/signup", async (req, res, next) => {
   // const user = req.body;
   const { userId, password } = req.body;
@@ -38,6 +40,7 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
+// POST /users/signin
 router.post("/signin", async (req, res, next) => {
   const { userId, password } = req.body;
 

@@ -1,12 +1,11 @@
-// class UserView extends view {}
 module.exports = {
-  sucess: (data) => ({
+  success: (result) => ({
     message: "Success",
-    result: { data },
+    result,
   }),
-  created: () => ({
+  created: (data) => ({
     message: "Created Success",
-    result: {},
+    result: { ...data },
   }),
   updated: () => ({
     message: "Updated Success",
@@ -21,7 +20,7 @@ module.exports = {
     result: {},
   }),
   noContent: () => ({
-    message: "Success - No Content",
+    message: "No Content",
     result: {},
   }),
   conflict: () => ({

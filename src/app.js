@@ -7,6 +7,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const userRouter = require("./user/user.controller");
+const todoRouter = require("./todo/todo.controller");
 const { errorHandler } = require("../middleware/error.middleware");
 const { notFoundHandler } = require("../middleware/not-found.middleware");
 require("dotenv").config();
@@ -24,8 +25,10 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+
 // API
 app.use("/api/user", userRouter);
+app.use("/api/todo", todoRouter);
 // ERROR MIDDLEWARE
 app.use(errorHandler);
 app.use(notFoundHandler);
@@ -33,8 +36,10 @@ app.use(notFoundHandler);
 /**
  * Server Activation
  */
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+if (!module.parent) {
+  app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+  });
+}
 
 module.exports = app;
